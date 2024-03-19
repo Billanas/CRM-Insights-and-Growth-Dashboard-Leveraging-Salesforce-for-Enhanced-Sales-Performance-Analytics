@@ -1,0 +1,40 @@
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by all;
+q = foreach q generate sum('Sale_Amount') as 'Total_Sales_Revenue';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by all;
+q = foreach q generate avg('Sale_Amount') as 'Average_Sale_Amount';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by all;
+q = foreach q generate sum('Commission_Amount') as 'Commission_Payout_Total';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by all;
+q = foreach q generate avg('Commission_Amount') as 'Average_Commission_per_Sale';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by all;
+q = foreach q generate avg('Commission_Amount') as 'Average_Commission_per_Sale';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by all;
+q = foreach q generate sum('Incentive_Amount') as 'Total_Incentives_Awarded';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by 'Region';
+q = foreach q generate 'Region', sum('Sale_Amount') as 'Sales_by_Region';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by 'Sales_Agent_ID';
+q = foreach q generate 'Sales_Agent_ID', sum('Sale_Amount') as 'Total_Sales', sum('Commission_Amount') as 'Total_Commission';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by 'Product/Service_Sold';
+q = foreach q generate 'Product/Service_Sold', sum('Sale_Amount') as 'Total_Sales_for_Product_Service';
+
+q = load "financial_analytics_kpi_dashboard_data";
+q = group q by 'Criteria_Encoded';
+q = foreach q generate 'Criteria_Encoded', sum('Incentive_Amount') as 'Incentive_Distribution_by_Criteria';
+
